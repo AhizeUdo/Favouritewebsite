@@ -7,11 +7,17 @@ function saveBookmark(e){
     var siteName = document.getElementById('siteName').value;
     var siteURL = document.getElementById('siteUrl').value;
 
+    //user has to input information into the form or else page will alert "fill form "
+    if(!validateForm(siteName,siteURL)){
+        return false;
+    }
+    
     //stores the pages
     var syncpacket = {
         name: siteName,
         url: siteURL
     }
+   
 
     //Test if syncpages is null 
     if(localStorage.getItem('syncpages')== null){
@@ -36,7 +42,10 @@ function saveBookmark(e){
 
     // test if syncpages works
     // console.log(syncpacket);
-    fetchsyncpages();
+
+    //clear form 
+    document.getElementById('myForm').reset();
+        fetchsyncpages();
 
     e.preventDefault();
     
@@ -55,9 +64,54 @@ function fetchsyncpages(){
         var url = sarraypacket[i].url;
 
         syncpagesresults.innerHTML += '<div class ="well">'+
-                                       '<h4>'+name+'<h4>'
-                                       '</div>'
+                                       '<h5>'+name+
+                                       '<a class = "btn btn-default" href="'+url+'">Visit</a>'+
+                                       '<a onclick = "deletesyncPage(\''+url+'\')" class = "btn btn-danger">Delete</a>'+
+                                       '</h5>'+
+                                       '</div>';
     }
 
     // console.log(sarraypacket)
+}
+
+
+
+//function to validate form
+function validateForm(siteName, siteURL){
+    if(!siteName || !siteURL){
+        alert('Please fill the form...');
+        return false;
+    } 
+
+    //using regex to check for unwanted values or entries in user input
+    var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+    var regex = new RegExp(expression); 
+
+
+    //make ssure user enters valid url 
+    if(!siteURL.match(regex)){
+        alert('Please enter a valid URL ');
+        return false;
+    }
+
+    return true;
+
+}
+
+function deletesyncPage(url){
+    //get pages
+    var sarraypacket = JSON.parse(localStorage.getItem('syncpages'));
+
+    //loop throught the pages 
+    for(var i = 0; i < sarraypacket.length; i++){
+        //remove from packet array
+        if(sarraypacket[i].url == url){
+            sarraypacket.splice(i, 1);
+        }
+    }
+    // re-set to localstorage
+    localStorage.setItem('syncpages', JSON.stringify(sarraypacket));
+    //re-fetch pages
+    fetchsyncpages();
+
 }
