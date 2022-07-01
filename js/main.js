@@ -113,5 +113,6 @@ function deletesyncPage(url){
     localStorage.setItem('syncpages', JSON.stringify(sarraypacket));
     //re-fetch pages
     fetchsyncpages();
+    //fetchsyncpages//
 
 }
