@@ -63,12 +63,22 @@ function fetchsyncpages(){
         var name = sarraypacket[i].name;
         var url = sarraypacket[i].url;
 
-        syncpagesresults.innerHTML += '<div class ="well">'+
-                                       '<h5>'+name+
-                                       '<a class = "btn btn-default" href="'+url+'">Visit</a>'+
+        syncpagesresults.innerHTML +=  '<div class ="card visitpagearea">'+
+                                       '<div class="card-header">'+'Feautured Page'+
+                                       '<div class="card-body">'+
+                                       '<h5 class="card-title">'+'<h1>'+name+'</h1>'+'</h5>'+'<hr>'+
+                                       '<p>'+'<a class = "btn btn-primary" href="'+url+'">Visit</a>'+'</p>'+
                                        '<a onclick = "deletesyncPage(\''+url+'\')" class = "btn btn-danger">Delete</a>'+
-                                       '</h5>'+
-                                       '</div>';
+                                       '</div>'+
+                                       '</div>'+
+                                       '</div>'+
+                                       '<br>';
+                                    //    '<div class ="well">'+
+                                    //    '<h5>'+name+
+                                    //    '<a class = "btn btn-default" href="'+url+'">Visit</a>'+
+                                    //    '<a onclick = "deletesyncPage(\''+url+'\')" class = "btn btn-danger">Delete</a>'+
+                                    //    '</h5>'+
+                                    //    '</div>';
     }
 
     // console.log(sarraypacket)

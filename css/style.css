@@ -15,3 +15,41 @@ body {
       font-size: 3.5rem;
     }
   }
+
+  .viewarea{
+    border-radius: 12px;
+    /* width: 50rem; */
+
+  }
+
+  .visitpagearea{
+    border-radius: 13px;
+    background-image: url(/pexels-gdtography-950241.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: 0;
+  }
+
+  .viewareatwo{
+    border-radius: 12px;
+    background-image: url(/pexels-johannes-plenio-1103970.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .greenarea{
+    width: 100%;
+    height: 600px;
+    color: white;
+    border-radius: 12px;
+    background-image: url(/pexels-ibadah-mimpi-3283186.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* .bodypacket{
+    background: linear-gradient(rgb(204, 204, 204), white);
+  } */
